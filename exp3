@@ -1,0 +1,38 @@
+package exp;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Exp3 extends JFrame implements ActionListener {
+    JTextField[] marks = new JTextField[5];
+    JButton submit;
+
+    public Exp3() {
+        setLayout(new GridLayout(6, 2));
+        for (int i = 0; i < 5; i++) {
+            add(new JLabel("Subject " + (i + 1) + ":"));
+            marks[i] = new JTextField();
+            add(marks[i]);
+        }
+        submit = new JButton("Submit");
+        add(submit);
+        submit.addActionListener(this);
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        int total = 0;
+        for (int i = 0; i < 5; i++) {
+            total += Integer.parseInt(marks[i].getText());
+        }
+        int avg = total / 5;
+        String result = (avg >= 40) ? "Pass" : "Fail";
+        JOptionPane.showMessageDialog(this, "Total: " + total + "\nResult: " + result);
+    }
+
+    public static void main(String[] args) {
+        new Exp3();
+    }
+}
