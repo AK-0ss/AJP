@@ -1,0 +1,35 @@
+package exp;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Exp1 extends JFrame implements KeyListener {
+    String msg = "Press a key";
+
+    public Exp1() {
+        setTitle("Key Event Example");
+        setSize(400, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addKeyListener(this);
+        setFocusable(true);
+        setVisible(true);
+    }
+
+    public void keyTyped(KeyEvent e) {
+        msg = "Typed: " + e.getKeyChar();
+        repaint();
+    }
+
+    public void keyPressed(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {}
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawString(msg, 100, 100);
+    }
+
+    public static void main(String[] args) {
+        new Exp1();
+    }
+}
