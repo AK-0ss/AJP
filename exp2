@@ -1,0 +1,36 @@
+package exp;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Exp2 extends JFrame implements MouseListener {
+    String msg = "Click anywhere";
+
+    public Exp2() {
+        setTitle("Mouse Event Example");
+        setSize(400, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addMouseListener(this);
+        setVisible(true);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        msg = "Clicked at X: " + e.getX() + ", Y: " + e.getY();
+        repaint();
+    }
+
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.drawString(msg, 100, 100);
+    }
+
+    public static void main(String[] args) {
+        new Exp2(); // this line is fine
+    }
+}
