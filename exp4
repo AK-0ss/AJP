@@ -1,0 +1,25 @@
+package exp;
+
+import java.sql.*;
+
+public class exp4 {
+    public static void main(String[] args) {
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/class", "root", "Aniruddh@123");
+            Statement stmt = con.createStatement();
+
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS students (id INT, name VARCHAR(50))");
+            stmt.executeUpdate("INSERT INTO students (id, name) VALUES (1, 'John')");
+
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students");
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt(1) + ", Name: " + rs.getString(2));
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
